@@ -222,7 +222,7 @@ echo '</pre>';
 
 
 // Define a class called Animal
-class Animal {
+class Animall {
     // Method to make the animal sound
     public function makeSound() {
         return "Animal makes a sound";
@@ -230,7 +230,7 @@ class Animal {
 }
 
 // Define a subclass Dog that extends Animal
-class Dog extends Animal {
+class Dog extends Animall {
     // Override the makeSound method for a dog
     public function makeSound() {
         return "Dog barks";
@@ -238,7 +238,7 @@ class Dog extends Animal {
 }
 
 // Define a subclass Cat that extends Animal
-class Cat extends Animal {
+class Cat extends Animall {
     // Override the makeSound method for a cat
     public function makeSound() {
         return "Cat meows";
@@ -246,7 +246,7 @@ class Cat extends Animal {
 }
 
 // Define a function that takes an Animal object and makes it sound
-function animalMakesSound(Animal $animal) {
+function animalMakesSound(Animall $animal) {
     return $animal->makeSound();
 }
 
@@ -257,7 +257,196 @@ $cat = new Cat();
 // Call the animalMakesSound function with different animals
 echo animalMakesSound($dog); // Output: Dog barks
 echo "<br>";
-echo animalMakesSound($cat); // Output: Cat meows
+echo animalMakesSound($cat);
+ // Output: Cat meows
+// Define a class called Animal
+class Animal {
+    // Properties
+    public $name;
+    public $species;
+
+    // Constructor Method
+    public function __construct($name, $species) {
+        // This constructor method takes two parameters: $name and $species.
+
+        // Inside the constructor, we initialize the object's properties with the values provided.
+        $this->name = $name;
+        $this->species = $species;
+
+        // The keyword "$this" refers to the current object, which is being created.
+        // So, $this->name and $this->species represent the properties of the object.
+
+        // This code is automatically executed when an object of the Animal class is created.
+    }
+
+    // Method to make the animal sound
+    public function makeSound() {
+        return "Animal makes a sound";
+    }
+}
+
+// Create an instance of the Animal class and pass values to the constructor
+$lion = new Animal("Simba", "Lion");
+
+// When we create the $lion object, the constructor method is automatically called.
+// The values "Simba" and "Lion" are passed to the constructor to initialize the $name and $species properties.
+
+// Now, $lion->name is "Simba" and $lion->species is "Lion".
+
+// Call the makeSound method for the $lion object
+$sound = $lion->makeSound();
+
+// Output the result
+echo "$lion->name ($lion->species) says: $sound"; // Output: Simba (Lion) says: Animal makes a sound
+
+
+class MyClass {
+    public function __call($method, $arguments) {
+        echo "Calling method '$method' with arguments: " . implode(', ', $arguments) . "<br>";
+    }
+}
+
+$obj = new MyClass();
+
+// Calling a non-existing method 'exampleMethod' on the object.
+$obj->exampleMethod("arg1", "arg2", "arg3");
+
+
+
+//__get and __set
+class Person {
+    private $name;
+
+    public function __get($property) {
+        if ($property === "name") {
+            return "This is a private property.";
+        }
+    }
+}
+
+$person = new Person();
+echo $person->name; // Calls __get method for "name" property
+// Output: This is a private property.
+
+class Man {
+    private $name;
+
+    public function __set($property, $value) {
+        if ($property === "name") {
+            $this->namee = strtoupper($value);
+        }
+    }
+}
+
+$person = new Man();
+$person->name = "John"; // Calls __set method for "name" property
+//echo $person->name; // Output: JOHN
+
+
+//Static methods can be called directly - without creating an instance of the class first.
+
+
+// Define a class called "stat"
+class stat {
+    // Declare a public static property called "method" and initialize it
+    public static $method = " <br> it works";
+
+    // Declare a public static method called "sayhello"
+    public static function sayhello() {
+        // This method returns the string "hello"
+        return "<br> hello";
+    }
+}
+
+// Access the static property "method" of the "stat" class
+echo stat::$method;
+// Output: <br> it works
+
+// Call the static method "sayhello" of the "stat" class
+echo stat::sayhello();
+// Output: <br> hello
+
 ?>
+
+<?php
+//traits 
+
+//traits enable you to create reusable code snippets that can be used in multiple classes independently
+
+
+// Define a trait for hair-related methods
+
+// Define a trait for hair-related methods
+trait Hair {
+    public function hasYellowHair() {
+        echo "He has yellow hair. ";
+        return $this; // Return the current object for method chaining
+    }
+}
+
+// Define a trait for eye-related methods
+trait Eyes {
+    public function hasBlueEyes() {
+        echo "He has blue eyes. ";
+        return $this; // Return the current object for method chaining
+    }
+}
+
+// Define a class
+class Blonde {
+    public function isBlonde() {
+        echo "This person is blonde. ";
+    }
+
+    // Use the traits in the class
+    use Hair, Eyes;
+}
+
+// Create an instance of the Blonde class
+$person = new Blonde();
+
+// Use method chaining to describe the person
+$person->hasYellowHair()->hasBlueEyes();
+
+
+echo '<pre>';print_r($person); echo'</pre>';
+
+
+
+
+
+// Define a trait with a method name conflict
+trait TraitA {
+    public function speak() {
+        echo "TraitA speaking. ";
+        return $this;
+    }
+}
+
+// Define another trait with the same method name
+trait TraitB {
+    public function speak() {
+        echo "TraitB speaking. ";
+        return $this;
+    }
+}
+
+// Create a class and use both traits
+class MyClasss {
+    use TraitA, TraitB {
+        TraitA::speak insteadof TraitB; // Use TraitA's speak method and alias it
+        TraitB::speak as speakB; // Alias TraitB's speak method as speakB
+    }
+}
+
+// Create an instance of MyClass
+$obj = new MyClasss();
+
+// Call the speak method from TraitA (aliased)
+$obj->speak()->speakB();
+
+
+?>
+
 
 
