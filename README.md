@@ -28,6 +28,3 @@ This repository contains a PHP script that demonstrates various concepts of Obje
 
 - `OOP.php`: The main PHP script containing the OOP examples.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
