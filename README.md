@@ -26,5 +26,5 @@ This repository contains a PHP script that demonstrates various concepts of Obje
 
 ## Files
 
-- `OOP.php`: The main PHP script containing the OOP examples.
+- `OOP_summary.php`: The main PHP script containing the OOP examples.
 
